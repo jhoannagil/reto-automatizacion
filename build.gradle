@@ -14,7 +14,7 @@ ext {
     serenityVersion = '4.0.12'
     lombokVersion = '1.18.30'
     assertJVersion = '3.24.2'
-    jacksonVersion = '3.0.0-rc1' // tools.jackson.core is used for Jackson 3
+    jacksonVersion = '2.15.2'
 }
 
 dependencies {
@@ -25,7 +25,7 @@ dependencies {
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // Jackson
-    implementation "tools.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
     // Serenity BDD
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
