@@ -39,14 +39,13 @@ public class PostResourceStepDefinitions {
 
     @When("el usuario envía los datos para crear el registro")
     public void el_usuario_envia_los_datos_para_crear_el_registro() {
-        // Usamos el patrón Builder de Lombok para crear los datos a enviar
+        
         PostRequest datosAEnviar = PostRequest.builder()
-                .title("Automatizacion con Jhoanna")
-                .body("Este es un post de prueba creado con Screenplay")
+                .title("Automatizacion de Jhoa POST")
+                .body("Esta es una prueba post")
                 .userId(1)
                 .build();
 
-        // Llamamos a nuestra tarea pasándole la ruta y los datos
         theActorInTheSpotlight().attemptsTo(
             CrearRecurso.conDatos("/posts", datosAEnviar)
         );
@@ -61,7 +60,6 @@ public class PostResourceStepDefinitions {
 
     @Then("verifica que el registro se creó con la información enviada")
     public void verifica_que_el_registro_se_creo_con_la_informacion_enviada() {
-        // En el próximo paso crearemos la pregunta (Question) para validar el Body
-        // Por ahora lo dejaremos vacío para comprobar que el POST pasa.
+       
     }
 }

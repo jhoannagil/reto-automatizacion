@@ -24,12 +24,11 @@ El proyecto sigue una estructura limpia orientada al dominio y separada por resp
 
 ## Comandos
 
-Ejecutar pruebas:
-```bash
-./gradlew clean test
-```
-
-Generar reporte de Serenity:
-```bash
-./gradlew reports
-```
+| Comando | Descripción |
+|---------|-------------|
+| `./gradlew clean test` | Limpia todo lo anterior y ejecuta todas las pruebas desde cero |
+| `./gradlew test` | Ejecuta todas las pruebas del proyecto |
+| `./gradlew compileJava` | Solo compila el código para verificar errores, sin ejecutar pruebas |
+| `./gradlew compileTestJava` | Compila el código de las pruebas para verificar errores |
+| `./gradlew aggregate` | Genera el reporte HTML de Serenity a partir de los últimos resultados |
+| `open target/site/serenity/index.html` | Abre el reporte de Serenity en el navegador (macOS) |

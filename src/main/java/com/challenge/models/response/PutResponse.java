@@ -1,16 +1,17 @@
-package com.challenge.models.request;
+package com.challenge.models.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data // crea los metodos
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class PostRequest {
+public class PutResponse {
+    private Integer id;
     private String title;
     private String body;
     private Integer userId;

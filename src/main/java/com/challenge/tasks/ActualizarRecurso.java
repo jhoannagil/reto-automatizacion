@@ -1,32 +1,36 @@
 package com.challenge.tasks;
 
-import com.challenge.interactions.api.Post;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class CrearRecurso implements Task {
+import com.challenge.interactions.api.Put;
 
-    private final String recurso;
+public class ActualizarRecurso implements Task {
+      private final String endpoint;
     private final Object body;
 
-    public CrearRecurso(String recurso, Object body) {
-        this.recurso = recurso;
+    public ActualizarRecurso(String endpoint, Object body) {
+        this.endpoint = endpoint;
         this.body = body;
     }
 
+   
     @Override
     @Step("{0} envía la información al recurso #recurso")
     public <T extends Actor> void performAs(T actor) {
-
         actor.attemptsTo(
-            Post.alRecurso(recurso, body)
+            Put.alRecurso(endpoint, body)
         );
     }
 
-    public static CrearRecurso conDatos(String recurso, Object body) {
-        return instrumented(CrearRecurso.class, recurso, body);
+     public static ActualizarRecurso conDatos(String endpoint, Object body) {
+        return instrumented(ActualizarRecurso.class, endpoint, body);
     }
+
+
+
+    
+    
 }

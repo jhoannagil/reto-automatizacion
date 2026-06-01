@@ -1,5 +1,6 @@
 package com.challenge.models.request;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class PostRequest {
+public class PutRequest {
     private String title;
     private String body;
     private Integer userId;

@@ -20,5 +20,5 @@ import org.junit.platform.suite.api.Suite;
     key = Constants.PLUGIN_PROPERTY_NAME, 
     value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty"
 )
-public class GetApiTestRunner {
+public class ApiTestRunner {
 }

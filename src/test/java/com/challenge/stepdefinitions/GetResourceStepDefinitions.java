@@ -1,6 +1,7 @@
 package com.challenge.stepdefinitions;
 
 import com.challenge.questions.ValidarRespuestaGet;
+import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.ConsultarRecurso;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -10,7 +11,6 @@ import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
-import net.serenitybdd.screenplay.rest.questions.ResponseConsequence;
 import net.thucydides.model.util.EnvironmentVariables;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -44,11 +44,10 @@ public class GetResourceStepDefinitions {
         );
     }
 
-    @Then("el usuario visualiza una respuesta exitosa por parte del api")
-    public void el_usuario_visualiza_una_respuesta_exitosa_por_parte_del_api() {
+    @Then("el usuario visualiza que el código de respuesta del get es {int}")
+    public void el_usuario_visualiza_que_el_codigo_de_respuesta_del_get_es(Integer codigoEsperado) {
         theActorInTheSpotlight().should(
-            ResponseConsequence.seeThatResponse("El servidor respondió con éxito",
-                response -> response.statusCode(200))
+            seeThat("El código de estado de la respuesta", TheStatusCode.value(), equalTo(codigoEsperado))
         );
     }
 

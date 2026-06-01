@@ -18,13 +18,13 @@ ext {
 }
 
 dependencies {
-    // Lombok
+    // Lombok se usa para para no tener que escribir a mano los "getters", "setters" ni constructores.
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-    // Jackson
+    // Jackson convierte el archivo model a un JSON cuando se hace la petición.
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
     // Serenity BDD
