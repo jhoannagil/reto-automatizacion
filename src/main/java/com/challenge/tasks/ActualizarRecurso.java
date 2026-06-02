@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-import com.challenge.interactions.api.Put;
+import com.challenge.interactions.api.ExecutePut;
 
 public class ActualizarRecurso implements Task {
       private final String endpoint;
@@ -21,7 +21,7 @@ public class ActualizarRecurso implements Task {
     @Step("{0} envía la información al recurso #recurso")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-            Put.alRecurso(endpoint, body)
+            ExecutePut.alRecurso(endpoint, body)
         );
     }
 

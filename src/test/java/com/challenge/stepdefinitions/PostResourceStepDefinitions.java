@@ -3,6 +3,7 @@ package com.challenge.stepdefinitions;
 import com.challenge.models.request.PostRequest;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.CrearRecurso;
+import com.challenge.utils.constants.Endpoints;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -49,8 +50,10 @@ public class PostResourceStepDefinitions {
                 .userId(Integer.parseInt(datos.get(0).get("userId")))
                 .build();
 
+        String endpoint = Endpoints.RECURSO_POSTS.getUrl();
+
         theActorInTheSpotlight().attemptsTo(
-            CrearRecurso.conDatos("/posts", datosAEnviar)
+            CrearRecurso.conDatos(endpoint, datosAEnviar)
         );
     }
 

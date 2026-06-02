@@ -9,12 +9,12 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 import net.serenitybdd.annotations.Step;
 
-public class Put extends RestInteraction {
+public class ExecutePut extends RestInteraction {
 
     private final String recurso;
     private final Object body;
 
-    public Put(String recurso, Object body) {
+    public ExecutePut(String recurso, Object body) {
         this.recurso = recurso;
         this.body = body;
     }
@@ -28,7 +28,7 @@ public class Put extends RestInteraction {
             .put(CallAnApi.as(actor).resolve(recurso));
     }
 
-    public static Put alRecurso(String recurso, Object body) {
-        return instrumented(Put.class, recurso, body);
+    public static ExecutePut alRecurso(String recurso, Object body) {
+        return instrumented(ExecutePut.class, recurso, body);
     }
 }

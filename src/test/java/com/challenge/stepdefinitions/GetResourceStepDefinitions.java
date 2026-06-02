@@ -1,8 +1,11 @@
 package com.challenge.stepdefinitions;
 
-import com.challenge.questions.ValidarRespuestaGet;
+
+import com.challenge.questions.TheResponseBody;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.ConsultarRecurso;
+import com.challenge.utils.constants.Endpoints;
+
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -38,9 +41,12 @@ public class GetResourceStepDefinitions {
 
         OnStage.theActorCalled("Jhoanna")
                .whoCan(CallAnApi.at(URL_BASE));
-        SerenityRest.useRelaxedHTTPSValidation();       
+        SerenityRest.useRelaxedHTTPSValidation();  
+        
+        String endpoint = Endpoints.RECURSO_POST_POR_ID.getUrl().replace("{id}", "1");
+
         theActorInTheSpotlight().attemptsTo(
-            ConsultarRecurso.conElRecurso("/posts/1")
+            ConsultarRecurso.conElRecurso(endpoint)
         );
     }
 
@@ -54,7 +60,7 @@ public class GetResourceStepDefinitions {
     @Then("el usuario valida que el id sea igual a {int}")
     public void el_usuario_valida_que_el_id_sea_igual_a(Integer idEsperado) {
         OnStage.theActorInTheSpotlight().should(
-            seeThat("el ID obtenido del servicio", ValidarRespuestaGet.elIdEs(), equalTo(idEsperado))
+            seeThat("el ID obtenido del servicio", TheResponseBody.id(), equalTo(idEsperado))
         );
     }
 }
