@@ -1,48 +1,66 @@
 # QA REST Screenplay Challenge - Jhoa
 
-## Descripción y contexto
-Este repositorio contiene la automatización del Reto de QA que consiste en realizar las validaciones para 4 endpoints (GET, POST, PUT, DELETE) de una API REST, utilizando el patrón de diseño Screenplay con Serenity BDD y JUnit 5.
-    La API utilizada es JsonPlaceholder (https://jsonplaceholder.typicode.com/)
-    Los endpoints a validar son:
-    - GET /posts/{id}
-    - POST /posts
-    - PUT /posts/{id}
-    - DELETE /posts/{id}
+## 📝 Descripción y Contexto
+
+Este repositorio contiene la automatización del **Reto de QA**, el cual consiste en la implementación de pruebas automatizadas para validar los cuatro métodos principales (GET, POST, PUT, DELETE) de una API REST.
+
+Para este reto, se utiliza la API de pruebas: [JSONPlaceholder](https://jsonplaceholder.typicode.com/).
+
+### 🚀 Tecnologías Core
+La solución está implementada bajo el patrón de diseño **Screenplay**, utilizando:
+* **Serenity BDD** como framework de automatización.
+* **JUnit 5** como motor de ejecución.
+* **Gradle** como gestor de dependencias.
+
+###  Endpoints Validados
+Se han automatizado escenarios de prueba para los siguientes recursos:
+- `GET` `/posts/{id}` - Consulta de un registro específico.
+- `POST` `/posts` - Creación de un nuevo registro.
+- `PUT` `/posts/{id}` - Actualización completa de un registro existente.
+- `DELETE` `/posts/{id}` - Eliminación de un registro.
 
 ## Tecnologías
 
 El proyecto está construido con las siguientes tecnologías:
 
-- Java: Versión 25.0.2 Versión de soporte extendido (LTS) del lenguaje. Se eligió por sus mejoras en rendimiento y características modernas como Records y Text Blocks.
-- Gradle: Version 8.13Herramienta de automatización de compilación y gestión de dependencias, preferida por su velocidad y flexibilidad en comparación con Maven.
-- Serenity BDD: Framework de pruebas de código abierto que ayuda a escribir pruebas de aceptación de alta calidad y genera reportes detallados ("Living Documentation").
+- Java: Versión 25.0.2 Versión de soporte extendido (LTS) del lenguaje. 
+- Gradle: Version 8.13Herramienta de automatización de compilación y gestión de dependencias.
+- Serenity BDD: Framework de pruebas de código abierto que ayuda a escribir pruebas de aceptación de alta calidad y genera reportes detallados.
     - Core: Motor principal para la gestión de estados y reportes.
-    - Screenplay Pattern: Patrón de diseño que aplica principios SOLID para crear pruebas automatizadas escalables, mantenibles y altamente legibles, basadas en Actores, Tareas e Interacciones.
+    - Screenplay Pattern: Patrón de diseño que aplica principios SOLID para crear pruebas automatizadas
     - Screenplay REST: Extensión de Serenity que facilita el consumo de servicios web (API REST) integrándose de forma nativa con Rest-Assured.
 - JUnit 5 (Jupiter): La versión más reciente del framework de pruebas unitarias para Java, encargada de la ejecución y orquestación de los escenarios de prueba.
-- Lombok: Biblioteca de Java utilizada para reducir el código redundante. Permite automatizar la creación de Getters, Setters, Constructores y el patrón Builder mediante anotaciones.
-- Jackson Databind: Librería fundamental para el manejo de JSON. Se utiliza para la serialización (convertir objetos Java a JSON) y deserialización (convertir respuestas JSON a objetos Java) de los cuerpos de las peticiones API.
+- Lombok: Biblioteca de Java utilizada para reducir el código redundante. Permite automatizar la creación de Getters, Setters y Constructores
+- Jackson Databind: Librería para el manejo de JSON. Se utiliza para la serialización (convertir objetos Java a JSON) y deserialización (convertir respuestas JSON a objetos Java) de los cuerpos de las peticiones API.
 - AssertJ: Biblioteca de aserciones que permite escribir verificaciones de forma fluida, lo que hace que los errores en las pruebas sean mucho más fáciles de leer y diagnosticar.
 
+
+
 ## Estructura del Proyecto
-El proyecto se ha desarrollado siguiendo el patrón de diseño Screenplay, promoviendo principios SOLID y una clara separación de responsabilidades para garantizar un código mantenible, escalable y legible.
 
+El proyecto se ha desarrollado siguiendo el patrón de diseño Screenplay, promoviendo principios SOLID y una clara separación de responsabilidades para garantizar un código mantenible, escalable y legible:
+
+```text
 src
-├── main/java/com/challenge
-│   ├── constants/       # Enums para centralizar Endpoints y rutas.
-│   ├── config/          # Configuración dinámica de ambientes (serenity.conf).
-│   ├── interactions/    # Acciones de bajo nivel (ExecuteGet, ExecutePost, ExecutePut).
-│   ├── models/          # POJOs (Request/Response) con Lombok y Jackson.
-│   ├── tasks/           # Acciones de alto nivel que orquestan las interacciones.
-│   └── questions/       # Aserciones y validaciones sobre la respuesta de la API.
-├── test/java/com/challenge
-│   ├── runners/         # Clases para ejecutar los escenarios de Cucumber.
-│   └── stepdefinitions/ # Mapeo de los pasos Gherkin a código Java.
-└── test/resources
-    ├── features/        # Escenarios de prueba en lenguaje Gherkin (Cucumber).
-    └── serenity.conf    # Configuración centralizada de Serenity y variables de entorno.
+├── main
+│   └── java
+│       └── com.challenge
+│           ├── config        # Configuración dinámica de ambientes
+│           ├── constants     # Endpoints centralizados en Enums
+│           ├── interactions  # Acciones de bajo nivel (POST, GET, PUT)
+│           ├── models        # POJOs (Request/Response) con Lombok
+│           ├── questions     # Validaciones de las respuestas (Assertions)
+│           └── tasks         # Pasos de alto nivel (Lógica de negocio)
+└── test
+    ├── java
+    │   └── com.challenge
+    │       ├── runners       # Clases para ejecutar los tests
+    │       └── stepdefinitions # Mapeo de Gherkin a código Java
+    └── resources
+        ├── features          # Archivos .feature (Escenarios Cucumber)
+        └── serenity.conf     # Configuración central de Serenity
 
-##Descripción de Componentes:
+## Descripción de Componentes:
 
 - `interactions`: Representan el "Cómo" el Actor interactúa con el sistema. Aquí se encapsulan las peticiones HTTP (GET, POST, PUT, DELETE) utilizando RestInteraction.
 - `tasks`: Representan el "Qué" hace el Actor. Orquestan una o más interacciones para completar un flujo de negocio (ej. CrearRecurso).
