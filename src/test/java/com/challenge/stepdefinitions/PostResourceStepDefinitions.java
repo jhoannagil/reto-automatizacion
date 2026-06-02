@@ -19,6 +19,9 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.equalTo;
 
+import java.util.List;
+import java.util.Map;
+
 
 public class PostResourceStepDefinitions {
 
@@ -38,12 +41,12 @@ public class PostResourceStepDefinitions {
     }
 
     @When("el usuario envía los datos para crear el registro")
-    public void el_usuario_envia_los_datos_para_crear_el_registro() {
+    public void el_usuario_envia_los_datos_para_crear_el_registro(List<Map<String, String>> datos) {
         
         PostRequest datosAEnviar = PostRequest.builder()
-                .title("Automatizacion de Jhoa POST")
-                .body("Esta es una prueba post")
-                .userId(1)
+                .title(datos.get(0).get("title"))
+                .body(datos.get(0).get("body"))
+                .userId(Integer.parseInt(datos.get(0).get("userId")))
                 .build();
 
         theActorInTheSpotlight().attemptsTo(
@@ -58,8 +61,4 @@ public class PostResourceStepDefinitions {
         );
     }
 
-    @Then("verifica que el registro se creó con la información enviada")
-    public void verifica_que_el_registro_se_creo_con_la_informacion_enviada() {
-       
-    }
 }

@@ -1,11 +1,13 @@
 package com.challenge.tasks;
 
-import com.challenge.interactions.api.Post;
+
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
+
+import com.challenge.interactions.api.ExecutePost;
 
 public class CrearRecurso implements Task {
 
@@ -22,7 +24,7 @@ public class CrearRecurso implements Task {
     public <T extends Actor> void performAs(T actor) {
 
         actor.attemptsTo(
-            Post.alRecurso(recurso, body)
+            ExecutePost.alRecurso(recurso, body)
         );
     }
 
