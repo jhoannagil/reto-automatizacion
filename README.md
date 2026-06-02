@@ -1,12 +1,12 @@
 # QA REST Screenplay Challenge - Jhoa
 
-## 📝 Descripción y Contexto
+##  Descripción y Contexto
 
 Este repositorio contiene la automatización del **Reto de QA**, el cual consiste en la implementación de pruebas automatizadas para validar los cuatro métodos principales (GET, POST, PUT, DELETE) de una API REST.
 
 Para este reto, se utiliza la API de pruebas: [JSONPlaceholder](https://jsonplaceholder.typicode.com/).
 
-### 🚀 Tecnologías Core
+###  Tecnologías Core
 La solución está implementada bajo el patrón de diseño **Screenplay**, utilizando:
 * **Serenity BDD** como framework de automatización.
 * **JUnit 5** como motor de ejecución.
@@ -60,23 +60,44 @@ src
         ├── features          # Archivos .feature (Escenarios Cucumber)
         └── serenity.conf     # Configuración central de Serenity
 
-## Descripción de Componentes:
 
-- `interactions`: Representan el "Cómo" el Actor interactúa con el sistema. Aquí se encapsulan las peticiones HTTP (GET, POST, PUT, DELETE) utilizando RestInteraction.
-- `tasks`: Representan el "Qué" hace el Actor. Orquestan una o más interacciones para completar un flujo de negocio (ej. CrearRecurso).
-- `questions`: Se utilizan para consultar el estado del sistema o de la respuesta (ej. TheResponseBody, TheStatusCode). Son el núcleo de las validaciones.
-- `models`: Clases que representan la estructura de datos de la API. Se hace uso de @Builder de Lombok para facilitar la creación de objetos y Jackson para el manejo de JSON.
-- `constants`: Implementación de Enums para evitar el uso de "Magic Strings" y centralizar las rutas de los recursos (Endpoints).
-- `serenity.conf`: Configuración dinámica que permite cambiar la base.url y otros parámetros según el ambiente de ejecución sin tocar el código fuente.
+## 🧩 Descripción de Componentes
 
+Bajo el patrón **Screenplay**, las responsabilidades se dividen de la siguiente manera:
 
-## Comandos
+*   **`interactions`**  
+    Representan el **"Cómo"** el Actor interactúa con el sistema. Encapsulan las peticiones HTTP (`GET`, `POST`, `PUT`, `DELETE`) heredando de `RestInteraction`.
+*   **`tasks`**  
+    Representan el **"Qué"** hace el Actor. Orquestan una o más interacciones para completar un flujo de negocio (ej. `CrearRecurso`).
+*   **`questions`**  
+    Se utilizan para realizar las verificaciones. Consultan el estado de la respuesta para validarla (ej. `TheResponseBody`, `TheStatusCode`).
+*   **`models`**  
+    POJOs que representan la estructura de datos de la API. Usan `@Builder` de **Lombok** para facilitar la creación de objetos y **Jackson** para el mapeo JSON.
+*   **`constants`**  
+    Uso de **Enums** para centralizar las rutas de los recursos (Endpoints) y evitar el uso de cadenas de texto "quemadas" (*Magic Strings*).
+*   **`serenity.conf`**  
+    Archivo de configuración para manejar múltiples ambientes y propiedades globales sin modificar el código fuente.
 
-| Comando | Descripción |
-|---------|-------------|
-| `./gradlew clean test` | Limpia todo lo anterior y ejecuta todas las pruebas desde cero |
-| `./gradlew test` | Ejecuta todas las pruebas del proyecto |
-| `./gradlew compileJava` | Solo compila el código para verificar errores, sin ejecutar pruebas |
-| `./gradlew compileTestJava` | Compila el código de las pruebas para verificar errores |
-| `./gradlew aggregate` | Genera el reporte HTML de Serenity a partir de los últimos resultados |
-| `open target/site/serenity/index.html` | Abre el reporte de Serenity en el navegador (macOS) |
+---
+
+##  Comandos de Ejecución
+
+Puedes ejecutar las pruebas y generar reportes utilizando los siguientes comandos desde la terminal:
+
+### Ejecución de Pruebas
+| Acción | Comando |
+| :--- | :--- |
+| **Limpiar y Ejecutar todo** | `` ./gradlew clean test `` |
+| **Ejecutar pruebas** | `` ./gradlew test `` |
+| **Generar reporte final** | `` ./gradlew aggregate `` |
+
+### Mantenimiento y Compilación
+| Acción | Comando |
+| :--- | :--- |
+| **Compilar código fuente** | `` ./gradlew compileJava `` |
+| **Compilar pruebas** | `` ./gradlew compileTestJava `` |
+
+### Ver Reportes (macOS/Linux)
+Para ver el reporte detallado después de ejecutar las pruebas, usa:
+```bash
+open target/site/serenity/index.html
