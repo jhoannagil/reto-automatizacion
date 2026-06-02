@@ -75,7 +75,7 @@ Bajo el patrón Screenplay, las responsabilidades se dividen de la siguiente man
 Utiliza los siguientes comandos desde la terminal para interactuar con el proyecto:
 
 ###  Ejecución y Reportes
-```bash
+
 | Acción | Comando |
 | :--- | :--- |
 | **Limpiar y ejecutar todas las pruebas** | `./gradlew clean test` |
