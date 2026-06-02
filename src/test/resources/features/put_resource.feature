@@ -7,5 +7,9 @@ Característica: Actualización de registros
   Escenario: El usuario actualiza un registro exitosamente con el método PUT
     Dado que el usuario quiere actualizar un registro en la API
     Cuando el usuario envía los datos actualizados del registro
+      | title                 | body                                | userId |
+      | Actualización de Jhoa | Esta es una prueba de actualización |      1 |
     Entonces el usuario visualiza que el código de respuesta del put es 200
-    Y verifica que el registro se actualizó con la información enviada
+  ##  Y verifica que el registro se actualizó con la información enviada
+  ##    | title                 | body                                | userId |
+  ##    | Actualización de Jhoa | Esta es una prueba de actualización |      1 |

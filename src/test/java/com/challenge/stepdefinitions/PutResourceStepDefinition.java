@@ -4,6 +4,9 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.equalTo;
 
+import java.util.List;
+import java.util.Map;
+
 import com.challenge.models.request.PutRequest;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.ActualizarRecurso;
@@ -36,11 +39,11 @@ public class PutResourceStepDefinition {
     }
 
             @When("el usuario envía los datos actualizados del registro")
-        public void el_usuario_envía_los_datos_actualizados_del_registro() {
+        public void el_usuario_envía_los_datos_actualizados_del_registro(List<Map<String, String>> datos) {
            PutRequest datosActualizados = PutRequest.builder()
-            .title("Actualización de Jhoa PUT")
-            .body("Esta es una prueba put de actualización")
-            .userId(1)
+            .title(datos.get(0).get("title"))
+            .body(datos.get(0).get("body"))
+            .userId(Integer.parseInt(datos.get(0).get("userId")))
             .build();
 
     theActorInTheSpotlight().attemptsTo(
