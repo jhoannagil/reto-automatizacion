@@ -61,43 +61,28 @@ src
         └── serenity.conf     # Configuración central de Serenity
 
 
-## 🧩 Descripción de Componentes
+Bajo el patrón Screenplay, las responsabilidades se dividen de la siguiente manera:
 
-Bajo el patrón **Screenplay**, las responsabilidades se dividen de la siguiente manera:
-
-*   **`interactions`**  
-    Representan el **"Cómo"** el Actor interactúa con el sistema. Encapsulan las peticiones HTTP (`GET`, `POST`, `PUT`, `DELETE`) heredando de `RestInteraction`.
-*   **`tasks`**  
-    Representan el **"Qué"** hace el Actor. Orquestan una o más interacciones para completar un flujo de negocio (ej. `CrearRecurso`).
-*   **`questions`**  
-    Se utilizan para realizar las verificaciones. Consultan el estado de la respuesta para validarla (ej. `TheResponseBody`, `TheStatusCode`).
-*   **`models`**  
-    POJOs que representan la estructura de datos de la API. Usan `@Builder` de **Lombok** para facilitar la creación de objetos y **Jackson** para el mapeo JSON.
-*   **`constants`**  
-    Uso de **Enums** para centralizar las rutas de los recursos (Endpoints) y evitar el uso de cadenas de texto "quemadas" (*Magic Strings*).
-*   **`serenity.conf`**  
-    Archivo de configuración para manejar múltiples ambientes y propiedades globales sin modificar el código fuente.
-
----
+- interactions: Representan el "Cómo" el Actor interactúa con el sistema. Encapsulan las peticiones HTTP (GET, POST, PUT, DELETE) heredando de RestInteraction.
+- tasks: Representan el "Qué" hace el Actor. Orquestan una o más interacciones para completar un flujo de negocio (ej. CrearRecurso).
+- questions: Se utilizan para realizar las verificaciones. Consultan el estado de la respuesta para validarla (ej. TheResponseBody, TheStatusCode).
+- models: POJOs que representan la estructura de datos de la API. Usan @Builder de Lombok para facilitar la creación de objetos y Jackson para el mapeo JSON.
+- constants: Uso de Enums para centralizar las rutas de los recursos (Endpoints) y evitar el uso de cadenas de texto "quemadas".
+- serenity.conf: Archivo de configuración para manejar múltiples ambientes y propiedades globales sin modificar el código fuente.
 
 ##  Comandos de Ejecución
 
-Puedes ejecutar las pruebas y generar reportes utilizando los siguientes comandos desde la terminal:
+Utiliza los siguientes comandos desde la terminal para interactuar con el proyecto:
 
-### Ejecución de Pruebas
+###  Ejecución y Reportes
 | Acción | Comando |
 | :--- | :--- |
-| **Limpiar y Ejecutar todo** | `` ./gradlew clean test `` |
-| **Ejecutar pruebas** | `` ./gradlew test `` |
-| **Generar reporte final** | `` ./gradlew aggregate `` |
+| **Limpiar y ejecutar todas las pruebas** | `./gradlew clean test` |
+| **Ejecutar pruebas (sin limpiar)** | `./gradlew test` |
+| **Generar reporte HTML de Serenity** | `./gradlew aggregate` |
+| **Abrir reporte en el navegador (macOS)** | `open target/site/serenity/index.html` |
 
-### Mantenimiento y Compilación
+### 🔧 Mantenimiento y Compilación
 | Acción | Comando |
 | :--- | :--- |
-| **Compilar código fuente** | `` ./gradlew compileJava `` |
-| **Compilar pruebas** | `` ./gradlew compileTestJava `` |
-
-### Ver Reportes (macOS/Linux)
-Para ver el reporte detallado después de ejecutar las pruebas, usa:
-```bash
-open target/site/serenity/index.html
+| **Compilar código de pruebas (test)** | `./gradlew compileTestJava` |
