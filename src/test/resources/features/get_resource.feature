@@ -5,5 +5,6 @@ Característica: Consulta de registros
 
   Escenario: El usuario consume el api con el metodo get
     Dado que el usuario consume el api con el metodo get
-    Entonces el usuario visualiza que el código de respuesta del get es 200
+    Cuando el usuario consulta el registro con id 1
+    Entonces el usuario visualiza que el codigo de respuesta del get es 200
     Y el usuario valida que el id sea igual a 1

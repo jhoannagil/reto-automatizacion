@@ -10,15 +10,13 @@ import java.util.Map;
 import com.challenge.models.request.PutRequest;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.ActualizarRecurso;
+import com.challenge.utils.config.EnvironmentConfig;
 import com.challenge.utils.constants.Endpoints;
 
 import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import io.cucumber.java.es.Entonces;
 import io.cucumber.java.en.Then;
-import net.serenitybdd.model.environment.EnvironmentSpecificConfiguration;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
@@ -28,17 +26,21 @@ import net.thucydides.model.util.EnvironmentVariables;
 public class PutResourceStepDefinition {
 
     private EnvironmentVariables environmentVariables;
+
+
     @Before
     public void setTheStage() {
         OnStage.setTheStage(new OnlineCast());
+        EnvironmentConfig.setVariables(environmentVariables);  
     }
 
       @Given("que el usuario quiere actualizar un registro en la API")
     public void que_el_usuario_quiere_actualizar_un_registro_en_la_api() {
-        String urlBase = EnvironmentSpecificConfiguration.from(environmentVariables)
-                .getProperty("base.url");
+        String urlBase = EnvironmentConfig.urlBase();
+
+        OnStage.theActorCalled("Jhoanna")
+               .whoCan(CallAnApi.at(urlBase));
         
-        OnStage.theActorCalled("Jhoanna").whoCan(CallAnApi.at(urlBase));
     }
 
             @When("el usuario envia los datos actualizados del registro")

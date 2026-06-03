@@ -3,13 +3,13 @@ package com.challenge.stepdefinitions;
 import com.challenge.models.request.PostRequest;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.CrearRecurso;
+import com.challenge.utils.config.EnvironmentConfig;
 import com.challenge.utils.constants.Endpoints;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.serenitybdd.model.environment.EnvironmentSpecificConfiguration;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
@@ -30,13 +30,13 @@ public class PostResourceStepDefinitions {
     @Before
     public void setTheStage() {
         OnStage.setTheStage(new OnlineCast());
+        EnvironmentConfig.setVariables(environmentVariables);
     }
 
 
     @Given("que el usuario quiere crear un nuevo registro en la API")
     public void que_el_usuario_quiere_crear_un_nuevo_registro_en_la_api() {
-        String urlBase = EnvironmentSpecificConfiguration.from(environmentVariables)
-                .getProperty("base.url");
+        String urlBase = EnvironmentConfig.urlBase();
         
         OnStage.theActorCalled("Jhoanna").whoCan(CallAnApi.at(urlBase));
     }
