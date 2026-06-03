@@ -11,3 +11,6 @@ Característica: Creación de registros
       | title | body                      | userId |
       | Reto  | Este es un post de prueba |      1 |
     Entonces el usuario visualiza que el código de respuesta es 201
+    Y verifica que el registro se creo con la informacion enviada
+      | title | body                      | userId |
+      | Reto  | Este es un post de prueba |      1 |

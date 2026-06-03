@@ -3,6 +3,10 @@ package com.challenge.stepdefinitions;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.equalTo;
+
+import java.util.List;
+import java.util.Map;
+
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 import com.challenge.questions.TheResponseBody;
@@ -59,10 +63,17 @@ public class GetResourceStepDefinitions {
         );
     }
 
-    @Then("el usuario valida que el id sea igual a {int}")
-    public void el_usuario_valida_que_el_id_sea_igual_a(Integer idEsperado) {
-        OnStage.theActorInTheSpotlight().should(
-            seeThat("el ID obtenido del servicio", TheResponseBody.id(), equalTo(idEsperado))
+    @Then("el usuario valida que la informacion del registro sea correcta")
+    public void el_usuario_valida_que_la_informacion_del_registro_sea_correcta(List<Map<String, String>> datos) {
+        theActorInTheSpotlight().should(
+            seeThat("el ID obtenido del servicio", 
+                TheResponseBody.id(), equalTo(Integer.parseInt(datos.get(0).get("id")))),
+                
+            seeThat("el título del registro", 
+                TheResponseBody.field("title"), equalTo(datos.get(0).get("title"))),
+                
+            seeThat("el userId del registro", 
+                TheResponseBody.intField("userId"), equalTo(Integer.parseInt(datos.get(0).get("userId"))))
         );
     }
 }
