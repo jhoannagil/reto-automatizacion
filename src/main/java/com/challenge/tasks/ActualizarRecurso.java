@@ -4,7 +4,6 @@ import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
-
 import com.challenge.interactions.api.ExecutePut;
 
 public class ActualizarRecurso implements Task {

@@ -1,4 +1,5 @@
 # language: es
+@Get
 Característica: Consulta de registros
       Como usuario del api
       Quiero consultar los registros existentes

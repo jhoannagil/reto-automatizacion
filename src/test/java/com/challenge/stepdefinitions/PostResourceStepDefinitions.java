@@ -1,25 +1,23 @@
 package com.challenge.stepdefinitions;
 
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.equalTo;
+
 import com.challenge.models.request.PostRequest;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.CrearRecurso;
 import com.challenge.utils.config.EnvironmentConfig;
 import com.challenge.utils.constants.Endpoints;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.thucydides.model.util.EnvironmentVariables;
-
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.equalTo;
-
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +37,7 @@ public class PostResourceStepDefinitions {
         String urlBase = EnvironmentConfig.urlBase();
         
         OnStage.theActorCalled("Jhoanna").whoCan(CallAnApi.at(urlBase));
+        SerenityRest.useRelaxedHTTPSValidation(); 
     }
 
     @When("el usuario envía los datos para crear el registro")

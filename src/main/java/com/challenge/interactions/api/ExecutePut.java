@@ -3,10 +3,7 @@ package com.challenge.interactions.api;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.rest.interactions.RestInteraction;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
-
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
-
 import net.serenitybdd.annotations.Step;
 
 public class ExecutePut extends RestInteraction {

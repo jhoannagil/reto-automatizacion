@@ -1,12 +1,15 @@
 package com.challenge.stepdefinitions;
 
 
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static org.hamcrest.Matchers.equalTo;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+
 import com.challenge.questions.TheResponseBody;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.ConsultarRecurso;
 import com.challenge.utils.config.EnvironmentConfig;
 import com.challenge.utils.constants.Endpoints;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,12 +19,6 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.thucydides.model.util.EnvironmentVariables;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static org.hamcrest.Matchers.equalTo;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-
-
 
 
 public class GetResourceStepDefinitions {

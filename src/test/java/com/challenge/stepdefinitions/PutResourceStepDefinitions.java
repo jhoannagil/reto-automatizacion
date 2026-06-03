@@ -6,13 +6,11 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.util.List;
 import java.util.Map;
-
 import com.challenge.models.request.PutRequest;
 import com.challenge.questions.TheStatusCode;
 import com.challenge.tasks.ActualizarRecurso;
 import com.challenge.utils.config.EnvironmentConfig;
 import com.challenge.utils.constants.Endpoints;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -23,7 +21,7 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.thucydides.model.util.EnvironmentVariables;
 
-public class PutResourceStepDefinition {
+public class PutResourceStepDefinitions {
 
     private EnvironmentVariables environmentVariables;
 
@@ -38,8 +36,8 @@ public class PutResourceStepDefinition {
     public void que_el_usuario_quiere_actualizar_un_registro_en_la_api() {
         String urlBase = EnvironmentConfig.urlBase();
 
-        OnStage.theActorCalled("Jhoanna")
-               .whoCan(CallAnApi.at(urlBase));
+        OnStage.theActorCalled("Jhoanna").whoCan(CallAnApi.at(urlBase));
+        SerenityRest.useRelaxedHTTPSValidation(); 
         
     }
 
@@ -80,7 +78,8 @@ public class PutResourceStepDefinition {
                 actor -> SerenityRest.lastResponse().jsonPath().getInt("userId"), 
                 equalTo(Integer.parseInt(datos.get(0).get("userId"))))
             );
-        }
+        } 
+        
     
 }
     

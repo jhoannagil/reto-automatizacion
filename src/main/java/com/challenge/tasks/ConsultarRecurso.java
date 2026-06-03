@@ -4,7 +4,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import com.challenge.interactions.api.ExecuteGet;
 import net.serenitybdd.annotations.Step;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class ConsultarRecurso implements Task {
