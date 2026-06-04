@@ -1,8 +1,8 @@
 # language: es
 @GET
 Característica: Consulta de registros
-      Como usuario del api
-      Quiero consultar los registros existentes
+  Como usuario del API
+  Quiero consultar los registros existentes
 
   Escenario: El usuario consume el api con el metodo get
     Dado que el usuario consume el api con el metodo get

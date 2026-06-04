@@ -1,6 +1,6 @@
 # language: es
 @DELETE
-Característica: Eliminacion de registros en la API
+Característica: Eliminacion de registros
   Como usuario de la API
   Quiero eliminar un registro existente
   Para validar el correcto funcionamiento de la eliminacion
