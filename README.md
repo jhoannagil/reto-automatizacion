@@ -20,11 +20,10 @@ Se han automatizado escenarios de prueba para los siguientes recursos:
 - `DELETE` `/posts/{id}` - Eliminación de un registro.
 
 ## Tecnologías
-
 El proyecto está construido con las siguientes tecnologías:
 
 - Java: Versión 25.0.2 Versión de soporte extendido (LTS) del lenguaje. 
-- Gradle: Version 8.13Herramienta de automatización de compilación y gestión de dependencias.
+- Gradle: Version 8.13 Herramienta de automatización de compilación y gestión de dependencias.
 - Serenity BDD: Framework de pruebas de código abierto que ayuda a escribir pruebas de aceptación de alta calidad y genera reportes detallados.
     - Core: Motor principal para la gestión de estados y reportes.
     - Screenplay Pattern: Patrón de diseño que aplica principios SOLID para crear pruebas automatizadas
@@ -70,11 +69,11 @@ Bajo el patrón Screenplay, las responsabilidades se dividen de la siguiente man
 - constants: Uso de Enums para centralizar las rutas de los recursos (Endpoints) y evitar el uso de cadenas de texto "quemadas".
 - serenity.conf: Archivo de configuración para manejar múltiples ambientes y propiedades globales sin modificar el código fuente.
 
-##  Comandos de Ejecución
+##  Ejecución y Reportes
 
+###  Comandos de Ejecución
 Utiliza los siguientes comandos desde la terminal para interactuar con el proyecto:
 
-###  Ejecución y Reportes
 
 | Acción | Comando |
 | :--- | :--- |
@@ -82,8 +81,17 @@ Utiliza los siguientes comandos desde la terminal para interactuar con el proyec
 | **Ejecutar pruebas (sin limpiar)** | `./gradlew test` |
 | **Generar reporte HTML de Serenity** | `./gradlew aggregate` |
 | **Abrir reporte en el navegador (macOS)** | `open target/site/serenity/index.html` |
+| **Ejecutar solo pruebas GET** | `gradle test -Dcucumber.filter.tags="@GET"` |
+| **Ejecutar solo pruebas POST** | `gradle test -Dcucumber.filter.tags="@POST"` |
+| **Ejecutar solo pruebas PUT** | `gradle test -Dcucumber.filter.tags="@PUT"` |
+| **Ejecutar solo pruebas DELETE** | `gradle test -Dcucumber.filter.tags="@DELETE"` |
 
-### 🔧 Mantenimiento y Compilación
-| Acción | Comando |
-| :--- | :--- |
-| **Compilar código de pruebas (test)** | `./gradlew compileTestJava` |
+## Evidencias de Ejecución
+
+![Evidencias de Ejecución GET ](/images/GET.png)
+![Evidencias de Ejecución POST](image-1.png)
+![Evidencias de Ejecución PUT](image-2.png)
+![Evidencias de Ejecución DELETE](image-3.png)
+![Evidencias de Ejecución Final](image-4.png)
+
+**Link de la ultima ejecución:** file:///Users/jhoannaesmeraldagiltocora/Repositorios/reto-automatizacion/target/site/serenity/index.html

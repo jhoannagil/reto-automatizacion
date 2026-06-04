@@ -1,5 +1,5 @@
 # language: es
-@Put
+@PUT
 Característica: Actualización de registros
   Como usuario de la API
   Quiero actualizar un registro existente

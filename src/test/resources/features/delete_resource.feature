@@ -1,5 +1,5 @@
 # language: es
-@Delete
+@DELETE
 Característica: Eliminacion de registros en la API
   Como usuario de la API
   Quiero eliminar un registro existente

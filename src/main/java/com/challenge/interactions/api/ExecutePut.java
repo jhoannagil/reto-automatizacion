@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import net.serenitybdd.annotations.Step;
 
+//Interacción personalizada para realizar las peticiones PUT hacia la API
+
 public class ExecutePut extends RestInteraction {
 
     private final String recurso;

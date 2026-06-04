@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.rest.interactions.Delete;
 import net.serenitybdd.annotations.Step;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
+//Interacción personalizada para realizar las peticiones DELETE hacia la API
+
 public class ExecuteDelete implements Interaction {
 
     private final String endpoint;

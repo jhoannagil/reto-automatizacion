@@ -1,5 +1,5 @@
 # language: es
-@Post
+@POST
 Característica: Creación de registros
   Como usuario de la API
   Quiero crear un nuevo registro
