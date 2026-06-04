@@ -22,8 +22,8 @@ Se han automatizado escenarios de prueba para los siguientes recursos:
 ## Tecnologías
 El proyecto está construido con las siguientes tecnologías:
 
-- Java: Versión 25.0.2 Versión de soporte extendido (LTS) del lenguaje. 
-- Gradle: Version 8.13 Herramienta de automatización de compilación y gestión de dependencias.
+- Java: Versión instalada: 21.0.2-tem
+- Gradle: Versión instalada: 8.13 Herramienta de automatización de compilación y gestión de dependencias.
 - Serenity BDD: Framework de pruebas de código abierto que ayuda a escribir pruebas de aceptación de alta calidad y genera reportes detallados.
     - Core: Motor principal para la gestión de estados y reportes.
     - Screenplay Pattern: Patrón de diseño que aplica principios SOLID para crear pruebas automatizadas
@@ -31,8 +31,6 @@ El proyecto está construido con las siguientes tecnologías:
 - JUnit 5 (Jupiter): La versión más reciente del framework de pruebas unitarias para Java, encargada de la ejecución y orquestación de los escenarios de prueba.
 - Lombok: Biblioteca de Java utilizada para reducir el código redundante. Permite automatizar la creación de Getters, Setters y Constructores
 - Jackson Databind: Librería para el manejo de JSON. Se utiliza para la serialización (convertir objetos Java a JSON) y deserialización (convertir respuestas JSON a objetos Java) de los cuerpos de las peticiones API.
-- AssertJ: Biblioteca de aserciones que permite escribir verificaciones de forma fluida, lo que hace que los errores en las pruebas sean mucho más fáciles de leer y diagnosticar.
-
 
 
 ## Estructura del Proyecto
@@ -62,7 +60,7 @@ src
 
 Bajo el patrón Screenplay, las responsabilidades se dividen de la siguiente manera:
 
-- interactions: Representan el "Cómo" el Actor interactúa con el sistema. Encapsulan las peticiones HTTP (GET, POST, PUT, DELETE) heredando de RestInteraction.
+- interactions: Representan el "Cómo" el Actor interactúa con el sistema.
 - tasks: Representan el "Qué" hace el Actor. Orquestan una o más interacciones para completar un flujo de negocio (ej. CrearRecurso).
 - questions: Se utilizan para realizar las verificaciones. Consultan el estado de la respuesta para validarla (ej. TheResponseBody, TheStatusCode).
 - models: POJOs que representan la estructura de datos de la API. Usan @Builder de Lombok para facilitar la creación de objetos y Jackson para el mapeo JSON.
@@ -81,10 +79,10 @@ Utiliza los siguientes comandos desde la terminal para interactuar con el proyec
 | **Ejecutar pruebas (sin limpiar)** | `./gradlew test` |
 | **Generar reporte HTML de Serenity** | `./gradlew aggregate` |
 | **Abrir reporte en el navegador (macOS)** | `open target/site/serenity/index.html` |
-| **Ejecutar solo pruebas GET** | `gradle test -Dcucumber.filter.tags="@GET"` |
-| **Ejecutar solo pruebas POST** | `gradle test -Dcucumber.filter.tags="@POST"` |
-| **Ejecutar solo pruebas PUT** | `gradle test -Dcucumber.filter.tags="@PUT"` |
-| **Ejecutar solo pruebas DELETE** | `gradle test -Dcucumber.filter.tags="@DELETE"` |
+| **Ejecutar solo pruebas GET** | `./gradlew clean test -Dcucumber.filter.tags="@GET"` |
+| **Ejecutar solo pruebas POST** | `./gradlew clean test -Dcucumber.filter.tags="@POST"` |
+| **Ejecutar solo pruebas PUT** | `./gradlew clean test -Dcucumber.filter.tags="@PUT"` |
+| **Ejecutar solo pruebas DELETE** | `./gradlew clean test -Dcucumber.filter.tags="@DELETE"` |
 
 
 
