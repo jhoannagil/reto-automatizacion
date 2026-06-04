@@ -86,12 +86,23 @@ Utiliza los siguientes comandos desde la terminal para interactuar con el proyec
 | **Ejecutar solo pruebas PUT** | `gradle test -Dcucumber.filter.tags="@PUT"` |
 | **Ejecutar solo pruebas DELETE** | `gradle test -Dcucumber.filter.tags="@DELETE"` |
 
+
+
 ## Evidencias de Ejecución
 
-![Evidencias de Ejecución GET ](/images/GET.png)
-![Evidencias de Ejecución POST](image-1.png)
-![Evidencias de Ejecución PUT](image-2.png)
-![Evidencias de Ejecución DELETE](image-3.png)
-![Evidencias de Ejecución Final](image-4.png)
+![Evidencias de Ejecución GET ](image-3.png)
+![Evidencias de Ejecución POST](image-2.png)
+![Evidencias de Ejecución PUT](image-4.png)
+![Evidencias de Ejecución DELETE](image-5.png)
+![Evidencias de Ejecución Completa](image-6.png)
 
-**Link de la ultima ejecución:** file:///Users/jhoannaesmeraldagiltocora/Repositorios/reto-automatizacion/target/site/serenity/index.html
+
+
+**Link de la ultima ejecución:** 
+
+file:///Users/jhoannaesmeraldagiltocora/Repositorios/reto-automatizacion/target/site/serenity/index.html
+
+
+**comando ./gradlew clean test pasando:**
+
+![./gradlew clean test](image-7.png)
